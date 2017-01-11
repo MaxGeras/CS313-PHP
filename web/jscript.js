@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('ready page:load',function(){
     $("#p1").hover(function(){
         $("#p1").css("color", "white");
         $("#p1").css("background", "grey"); 
