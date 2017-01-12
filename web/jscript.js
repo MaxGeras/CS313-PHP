@@ -1,3 +1,4 @@
+var click = 0;
 var ready;
 ready = function(){
     $("#p1").hover(function(){
@@ -48,8 +49,25 @@ ready = function(){
     });
 
     $("#pic").click(function(){
-    $("#p2").attr("src", "wife.jpg");
+
+     click += 1;
+     	if( click % 2 == 0)
+      	{
+     	  $("#p2").attr("src", "wife1.jpg");
+    	  $("#p2").css("color", "red").slideUp(2000).slideDown(2000);
+ 		}
+ 		else if( click % 3 == 0)
+ 		{
+ 			 $("#p2").attr("src", "family.jpg");
+    	  $("#p2").css("color", "red").slideUp(2000).slideDown(2000);
+ 		}
+ 		else
+ 		{
+ 		  $("#p2").attr("src", "wife.jpg");
+    	  $("#p2").css("color", "red").slideUp(2000).slideDown(2000);
+ 		}
     }); 
+
 };
 
 $(document).ready(ready);
