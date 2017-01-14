@@ -3,7 +3,6 @@ var click = 0;
 //ready = function(){
 $(document).ready(function(){
 
-    $("#header").animate({color:'black'},1000);
     $("#p1").hover(function(){
         $("#p1").css("color", "white");
         $("#p1").css("background", "grey"); 
