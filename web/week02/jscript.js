@@ -1,6 +1,9 @@
 var click = 0;
-var ready;
-ready = function(){
+//var ready;
+//ready = function(){
+$(document).ready(function(){
+
+    $("#header").animate({color:'black'},1000);
     $("#p1").hover(function(){
         $("#p1").css("color", "white");
         $("#p1").css("background", "grey"); 
@@ -48,27 +51,28 @@ ready = function(){
         $("#p6").css("font-size", "100%");
     });
 
-    $("#pic").click(function(){
+    $("#p2").click(function(){
 
-     click += 1;
-     	if( click % 2 == 0)
+        click += 1;
+
+     	if( click == 1)
       	{
-     	  $("#p2").attr("src", "wife1.jpg");
-    	  $("#p2").css("color", "red").slideUp(2000).slideDown(2000);
+     	  $("#p2").attr("src", "wife.jpg");
  		}
- 		else if( click % 3 == 0)
+ 		else if( click == 2)
  		{
- 			 $("#p2").attr("src", "family.jpg");
-    	  $("#p2").css("color", "red").slideUp(2000).slideDown(2000);
+ 		   $("#p2").attr("src", "wife1.jpg");
  		}
  		else
  		{
- 		  $("#p2").attr("src", "wife.jpg");
-    	  $("#p2").css("color", "red").slideUp(2000).slideDown(2000);
+ 		   $("#p2").attr("src", "family.jpg");
+ 		   click = 0;
+ 		   $("#p2").css("color", "red").slideUp(2000).slideDown(2000);
  		}
     }); 
 
-};
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+});
+
+//$(document).ready(ready);
+//$(document).on('page:load', ready);
