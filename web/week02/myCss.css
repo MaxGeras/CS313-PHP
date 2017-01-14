@@ -1,6 +1,6 @@
 
 html { 
-  background: url(tables.jpg) no-repeat center center fixed; 
+  background: url(tables.JPG) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -13,17 +13,6 @@ body{
 img {
     border-radius: 50%;
    -webkit-filter: grayscale(100%);filter: grayscale(100%);
-}
-
-header 
-{	
-	background: #FFE4C4;
-	color:black;
-	height: 30%;
-	width: 30%;
-	margin-left: 35%;
-	border-radius: 20%;
-	border-color: red;
 }
 
 
