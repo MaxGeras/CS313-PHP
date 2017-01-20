@@ -1,0 +1,157 @@
+/*----------------------------------------------
+CSS Settings For HTML Div ExactCenter
+------------------------------------------------*/
+body{
+	background-color: #F0FFFF ;
+	text-align: center;
+
+}
+
+#result{
+  float: center;
+}
+
+#prof{
+  float: right;
+}
+
+#cart{
+	position:absolute;
+           top:25%;
+           left:25%;	 
+  background-color: red;
+	
+}
+#cart2{
+	position:absolute;
+           top:25%;
+           left:35%;	 
+  background-color: red;
+  width: 40%;
+	
+}
+
+#cart1{
+	position:absolute;
+           top:40%;
+           left:15%;
+           width: 70%; 
+  background-color: red;
+
+}
+
+.tableheader {
+background-color: #95BEE6;
+color:white;
+font-weight:bold;
+font-size: 200%;
+}
+.tablerow {
+background-color: #A7D6F1;
+color:white;
+font-size: 200%;
+}
+.message {
+color: red;
+font-weight: bold;
+text-align: center;
+width: 100%;
+font-size: 200%;	
+}
+
+.review{
+	font-size: 100%;
+    font-family: cursive;  
+    font-style: oblique;
+    text-align:center; 
+    word-spacing: 10px;
+    text-align: left;
+}
+
+table{
+	position:absolute;
+           top:29%;
+           left: 33%;
+	 background-color: red;
+}
+
+th{
+font:italic bold 12px/25px Georgia,serif;
+ font-size:17px;
+ border:2px solid black;"
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+tr,td{
+border:2px solid black;
+text-align:center;
+background-color: #5F9EA0;
+font-family: "Times New Roman", Times, serif;
+ font-style: oblique;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+.pos{
+    position:absolute;
+   top:0;
+   right:0;
+}
+
+#top{
+	margin-top: 10%;
+}
+
+#id{
+    text-align:center;
+    opacity: 0.6;
+    filter: alpha(opacity=60); 
+    }
+
+  .b{
+    background-color: #4CAF50;
+    border: none;
+    color: #ff0;
+    font-family:Cursive;
+    padding: 15px 32px;
+    border-radius:5px;
+    width:220px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 3px solid red;
+    }
+
+ input:checked {
+    height: 50px;
+    width: 50px;
+}
+.qtyinput{
+	background-color: green;
+	color: yellow;
+}
+
+#price1, #price2, #price3, #price4{
+	font-weight: 900;
+	text-decoration: underline;
+}
+
+#submt{
+	text-align: left;
+	font-size: 200%;
+	font-family: "Times New Roman", Times, serif;
+    font-style: oblique;
+    margin-left: 20%;
+}
+
+.pos1{
+		position:absolute;
+           top:108%;
+           left: 35%;
+}

@@ -1,0 +1,111 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <link rel="stylesheet" type="text/css" href="style.css" />
+   
+       <title>My page</title>
+   </head>
+ 
+   <body>
+
+  <form id="prof" name="form1" method="post" action="log_out.php">
+  <label id="id" >
+  <input class="b" name="submit2" type="submit" id="submit2" value="Log out">
+  </label>
+  </form>
+      <h1><div id="result"></div> </h1>
+      <!--<h1>Please select the best option for you!</h1>-->
+     <script>
+       var user = localStorage.getItem("user");
+       document.getElementById("result").innerHTML = "Please select the best option for you!";
+     </script>
+
+    <form align="center" action="review.php" name="form" method="post">
+      <table id="cart">
+        <thead>
+          <tr>
+            <th class="first">Photo</th>
+            <th class="second">Qty</th>
+            <th class="third">Desciption</th>
+            <th class="fourth">Price $ </th>
+            <th>Add to card</th>
+          </tr>
+        </thead>
+  <!-- shopping cart contents -->
+  <tbody>
+
+ <tr class="productitm">
+    <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+    <td><img src="https://cdn.shopify.com/s/files/1/0353/8325/products/black-gmiller-classico-watch.jpg?v=1472072928" 
+    alt="watch" height="150" width="190" class="thumb"></td>
+    <td><input type="number" value="1" min="1" max="10" id="n1" name="num1" size = "6" class="qtyinput"></td>
+    <td> <p id="item1">40mm 18K yellow gold case,<br>
+     screw-down back, screw-down<br> 
+     crown and push buttons with<br>
+      Triplock triple waterproofness<br>
+      </p>
+      </td>
+    <td><p id="price1">79.00</p></td>
+    <td><input type="checkbox" value="add" name="item1"></td>
+  </tr>
+<tr class="productitm">
+    <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+    <td><img src="http://cdn2.jomashop.com/media/catalog/product/o/m/omega-speedmaster-professional-moonwatch-men_s-watch-311.30.42.30.01.005_1.jpg" 
+    alt="watch" height="150" width="190" class="thumb"></td>
+    <td><input type="number" value="1" min="0" max="99" name="num2" size="6" class="qtyinput"></td>
+    <td> <p id="item2">
+    Rolex calibre 4130 self-winding <br>
+    movement with hronograph central second <br> 
+    hand, 30-minute counter at 3 o'clock, <br>
+     and 12-hour counter at 9 o'clock, <br>
+     approximately 72 hours of power reserve<br></p>
+    </td>
+    <td><p id="price2">201.00</p> </td>
+    <td><input type="checkbox" value="add" name="item2"></td>
+  </tr>
+
+   <tr class="productitm">
+    <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+    <td><img src="http://cdn2.jomashop.com/media/catalog/product/o/m/omega-seamaster-planet-ocean-black-dial-men_s-watch-232.30.42.21.01.001_1.jpg" 
+    alt="watch" height="150" width="190" class="thumb"></td>
+    <td><input type="number" value="1" min="0" max="99" name="num3" size = "6" class="qtyinput"></td>
+    <td> <p id="item3">  18K yellow gold Oyster bracelet<br>
+    with flat three-piece links, folding<br>
+     Oysterlock buckle with Easylink 5mm<br>
+      comfort extension link. Waterproof <br>
+      to 100 meters.<br></p>
+    </td>
+    <td ><p id="price3">189.89</p> </td>
+    <td><input type="checkbox" value="add" name="item3"></td>
+  </tr>
+
+   <tr class="productitm">
+    <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+    <td><img src="http://www.watchtime.com/cms/wp-content/uploads/2013/12/Excalibur-Quatuor-Silicium.jpg" 
+    alt="watch" height="150" width="190" class="thumb"></td>
+    <td><input type="number" value="1" min="0" max="99" name="num4" size = "6" class="qtyinput"></td>
+    <td>  <p id="item4"> Rolex Sky-Dweller Champagne <br>
+    Arabic Dial Diamond Watch<br>
+    This watch is in like new<br>
+    condition. It's been polished,<br>
+    serviced and has no visible blemishes.<br></p>   
+    </td>
+    <td><p id="price4">123.40</p> </td>
+    <td><input type="checkbox" value="add" name="item4"></td>
+  </tr>
+  
+   <!-- Review -->
+  <tr class="checkoutrow">
+    <td colspan="5">  
+      <button class="b" type="submit" name ="review" id="submit">Review My Order</button>
+    </td>
+  </tr>
+  </tbody>
+  </table>
+  </form>              
+</body>
+</html>
