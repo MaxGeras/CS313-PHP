@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["login_user"])) {
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0) 
+{
 
     $message = "Enter your login please....";
-    header('location: user.html'); // Redirecting To Other Page
+    header('location: user.php'); // Redirecting To Other Page
     exit();
 }
 
@@ -38,23 +39,23 @@ if (!isset($_SESSION["login_user"])) {
             </tr>
             </thead>
         <?php 
-         if(sizeof($_SESSION["updtItem"]) != 0)
-         {
-            foreach( $_SESSION["updtItem"] as $x_value){
+       //  if(sizeof($_SESSION["updtItem"]) != 0)
+         //{
+            foreach( $_SESSION["myArray"] as $x_value){
                 echo'<tbody>';
                     echo'<tr>'; 
                         echo'<td>' .$x_value. '</td>';
                     echo'<tr>';
                 echo'</tbody>';
             }
-        }
+        //}
         ?>
     </table>
 
    <?php
-   
-        if(sizeof($_SESSION["updtItem"]) == 0)
-            echo '<p style="color: red; font-size:27px;"> All items has been removed from the list! </p>';
+
+        if(sizeof($_SESSION["myArray"]) == 0)
+            echo '<p style="color: red; font-size:27px; "> All items has been removed from the list! </p>';
    ?>
  </body>
 </html>

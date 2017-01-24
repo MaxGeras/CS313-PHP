@@ -5,27 +5,21 @@
 <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
+
 <form id="top" name="frmUser" method="post" action="login.php">
-
-<div class="message">
-
-<?php 
-	if($message != "")
-	echo $message;
-?>	
-</div>
-
 <table id="cart2">
 <tr class="tableheader">
-<td align="center" colspan="2">Enter Login Details</td>
+<td align="center" colspan="2">Enter Login Information</td>
 </tr>
 <tr class="tablerow">
 <td align="right">Username</td>
-<td><input type="text" name="userName"></td>
+<td><input type="text" name="userName" placeholder="username" ></td>
 </tr> 
 <tr class="tableheader">
 <td align="center" colspan="2"><input type="submit" name="submit" class="b" value="Login"></td>
 </tr>
 </table>
 </form>
-</body></html>
+
+</body>
+</html>

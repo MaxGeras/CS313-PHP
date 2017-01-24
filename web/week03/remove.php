@@ -1,8 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION["login_user"])) {
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0) 
+{
 	$message = "Enter your login please....";
-	header('location: user.html'); // Redirecting To Other Page
+	header('location: user.php'); // Redirecting To Other Page
 	exit();
 }
 ?>
@@ -16,6 +17,8 @@ if (!isset($_SESSION["login_user"])) {
 <body>
 
 <h1>Following items have been removed from your list : </h1>
+
+<ul class="sqr">
 <?php
 
 $remItem = array();
@@ -23,52 +26,56 @@ $remItem = array();
 if(isset($_POST['0']))
 {
 	$item1 = $_POST['0'];
-    echo $item1."<br>";
+?>	
+
+<li>    <?php echo $item1."<br>"; ?> </li>
+
+<?php
 }
 else
-{
-	$item1 = $_POST['5'];
-   array_push($remItem, $item1);
-}
+   array_push($remItem, $_POST['5']);
 
 if(isset($_POST['1']))
 {
 	$item2 = $_POST['1'];
-     echo $item2."<br>";
+?>	
+     <li> <?php echo $item2."<br>"; ?> </li>
+<?php
 }
 else
-{
-	$item2 = $_POST['6'];
-    array_push($remItem, $item2);
-}
+    array_push($remItem, $_POST['6']);
+
 
 if(isset($_POST['2']))
 {
 	$item3 = $_POST['2'];
-    echo $item3."<br>";
+?>	
+    <li>    <?php echo $item3."<br>"; ?> </li>
+<?php
 }
 else
-{
-	//$item3 = $_POST['7'];
-	array_push($remItem, $_POST['8']);
-}
+	array_push($remItem, $_POST['7']);
+
 
 if(isset($_POST['3']))
 {
 	$item4 = $_POST['3'];
-    echo $item4."<br>";
+?>
+
+ <li>    <?php echo $item4."<br>"; ?> </li>
+
+<?php
 }
 else
-{
-	//$item4 = $_POST['8'];
    array_push($remItem, $_POST['8']);
-}
 
 
-$_SESSION["updtItem"] = $remItem;
+
+$_SESSION["myArray"] = $remItem;
 
 ?>
 
+</ul>
 <h3 class="b" style="text-align: center;"><a href="checkout.php">CHECKOUT</a></h3>
 
 </body>

@@ -1,5 +1,5 @@
 /*----------------------------------------------
-CSS Settings For HTML Div ExactCenter
+CSS Settings For HTML 
 ------------------------------------------------*/
 body{
 	background-color: #F0FFFF ;
@@ -108,9 +108,9 @@ tr:nth-child(even){background-color: #f2f2f2}
     text-align:center;
     opacity: 0.6;
     filter: alpha(opacity=60); 
-    }
+}
 
-  .b{
+.b{
     background-color: #4CAF50;
     border: none;
     color: #ff0;
@@ -126,15 +126,20 @@ tr:nth-child(even){background-color: #f2f2f2}
     cursor: pointer;
     font-weight: bold;
     border: 3px solid red;
-    }
+}
 
- input:checked {
+input:checked {
     height: 50px;
     width: 50px;
 }
+
 .qtyinput{
-	background-color: green;
-	color: yellow;
+  text-align:center;
+  font-weight: bold; 
+  font-size: 16px;
+	color: #191970;
+  background-color: green;
+
 }
 
 #price1, #price2, #price3, #price4{
@@ -154,4 +159,21 @@ tr:nth-child(even){background-color: #f2f2f2}
 		position:absolute;
            top:108%;
            left: 35%;
+}
+
+ul {
+    background: #3399ff;
+    padding: 40px;
+}
+
+ul li {
+    background: #cce5ff;
+    margin: 10px;
+    font-size: 140%;
+
+}
+
+li:hover{background-color:#f5f5f5}
+ul.sqr {
+    list-style-type: square;
 }

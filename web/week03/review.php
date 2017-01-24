@@ -1,17 +1,24 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["login_user"])) {
-	$message = "Enter your login please....";
-	header('location: user.html'); // Redirecting To Other Page
+
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0) 
+{
+	header('location: user.php'); // Redirecting To Other Page
 	exit();
 }
+
 ?>
 
 <!DOCTYPE html>
 <html>
   <header>
    <link rel="stylesheet" type="text/css" href="style.css" />
+   <script>
+   function goBack() {
+      window.history.back();
+    }
+  </script>
  </header>
  <body class="review">
  <h1 style="text-align: center;">Please ,<?php echo $_SESSION["login_user"];?>, review your purchase!</h1>
@@ -111,7 +118,7 @@ if(isset($_POST['item4']))
            echo '<td>';
            echo '<input type="checkbox" value="'.$x_value.'" name="'.$x.'" >Remove Item</input>';
            $hidden = $x + 5;
-           echo '<input type="hidden" value="'.$x_value.'" name="'.$hidden.'" >Remove Item</input>';
+           echo '<input type="hidden" value="'.$x_value.'" name="'.$hidden.'" ></input>';
            echo '</td>';
           }
            echo'</tr>'; 
@@ -131,9 +138,8 @@ if(isset($_POST['item4']))
     </table>
      </form> 
      <div class="pos1">
-     <h3 class="b"> <?php echo "<a href=\"javascript:history.go(-1)\">Continue Your Shopping...</a>"; ?></h3>
-	<br>
-	<h3 class="b" style="text-align: center;"><a href="checkout.php">CHECKOUT</a></h3>
+      <button style="text-align: center;" class="b" onclick="goBack()">Go Back</button>
+	    <h3 class="b" style="text-align: center;"><a href="checkout.php"/>CHECKOUT</h3>
      </div>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION["login_user"])) {
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0) 
+ {
     $message = "Enter your login please....";
-    header('location: user.html'); // Redirecting To Other Page
+    header('location: user.php'); // Redirecting To Other Page
     exit();
 }
 ?>
