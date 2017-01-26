@@ -98,7 +98,7 @@ if(isset($_POST['item4']))
   ?>
 
    </div>
-    <h3>Your purchase includes following items:</h3>
+    <h3>Your purchase includes the following items:</h3>
    
     <form align="center" action="remove.php" name="formRemove" method="post">
     <table id="cart1">

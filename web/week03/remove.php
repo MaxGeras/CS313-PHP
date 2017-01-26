@@ -16,7 +16,7 @@ if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 
 </head>
 <body>
 
-<h1>Following items have been removed from your list : </h1>
+<h1>The following items have been removed from your list : </h1>
 
 <ul class="sqr">
 <?php

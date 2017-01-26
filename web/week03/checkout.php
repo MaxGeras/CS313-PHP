@@ -33,7 +33,7 @@ if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 
             <td><input type="text" name="last"></td>
             </tr> 
              <tr class="tablerow">
-                <td align="right">Adress</td>
+                <td align="right">Address</td>
             <td><input type="text" name="adress"></td>
             </tr> 
              <tr class="tablerow">
