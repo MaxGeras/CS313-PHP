@@ -63,7 +63,28 @@ $db = get_db();
       Please note that Administrators/Moderators reserve the right to change/edit/delete/move/merge any content at any time if they feel it is inappropriate, abusive, or incorrectly categorized.</p>
       <hr>
       <h3>Forums</h3>
-      <p></p>
+      
+      <?php>
+
+     
+      $statement = $db->prepare("SELECT category_name, category_description FROM category");
+      $statement->execute();
+      while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+      {
+      // The variable "row" now holds the complete record for that
+      // row, and we can access the different values based on their
+      // name
+      echo  "Life is good";
+      echo '<p>';
+      echo '<strong>' . $row['category_name'] . ' ' . $row['category_description'] . ':';
+      echo $row['verse'] . '</strong>' . ' - ' . $row['content'];
+      echo '</p>';
+      }
+       
+
+      ?>
+    
+
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
