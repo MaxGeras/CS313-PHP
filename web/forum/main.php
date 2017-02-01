@@ -82,32 +82,21 @@ $db = get_db();
         <?php 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
-                echo'<tbody>';
-                    echo'<tr>'; 
-                        echo'<td>';
-                        echo '<a href =\"testimony.php\"'.$row['category_name'].'</a>';
+                echo"<tbody>";
+                    echo "<tr>"; 
+                        
+                        echo "<td>";
+                        echo "<a href =\"testimony.php\">".$row['category_name']."</a>";
                         echo "<br>";
                         echo "(".$row['category_description'].")";
-                        echo '</td>';
-                        echo '<td>'." 0 ".'<\td>';
-                    echo'<tr>';
-                echo'</tbody>';
+                        echo "</td>";
+
+                        echo "<td>"." 0 "."<\td>";
+                    echo "<tr>";
+                echo "</tbody>";
             }
         ?>
     </table>
-
-      while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-      {
-  
-  
-      echo '<p>';
-      echo '<strong>' . $row['category_name'] . ' ' . $row['category_description'] . ':';
-      echo '</p>';
-      }
-       
-
-      
-    
 
     </div>
     <div class="col-sm-2 sidenav">
