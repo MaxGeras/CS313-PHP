@@ -64,3 +64,16 @@ $db = get_db();
     </div>
   </div>
 </div>
+
+<footer class="container-fluid text-center">
+  <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Posted by: Max Gerasymenko</a></li>
+        <li><a href="#">Contact information: ger14009@byui.edu</a></li>
+        <li><a href="#">Copyright © 2017. All rights reserved.</a></li>
+        <li><a href="#">LDS Forum</a></li>
+      </ul>
+    </div>
+</footer>
+
+</body>
