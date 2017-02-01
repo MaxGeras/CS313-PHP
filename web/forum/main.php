@@ -45,7 +45,7 @@ $db = get_db();
   
 <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="myLink">
+    <div class="col-sm-2 sidenav myLink">
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>Welcome</h1>
