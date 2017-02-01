@@ -69,20 +69,44 @@ $db = get_db();
      
       $statement = $db->prepare("SELECT category_name, category_description FROM category");
       $statement->execute();
+      ?>
+
+
+    <table >
+        <thead>
+            <tr>
+            <th>Forums</th>
+            <th>Users</th>
+            </tr>
+            </thead>
+        <?php 
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+            {
+                echo'<tbody>';
+                    echo'<tr>'; 
+                        echo'<td>';
+                        echo '<a href =\"testimony.php\"'.$row['category_name'].'</a>';
+                        echo "<br>";
+                        echo "(".$row['category_description'].")";
+                        echo '</td>';
+                        echo '<td>'." 0 ".'<\td>';
+                    echo'<tr>';
+                echo'</tbody>';
+            }
+        ?>
+    </table>
+
       while ($row = $statement->fetch(PDO::FETCH_ASSOC))
       {
-      // The variable "row" now holds the complete record for that
-      // row, and we can access the different values based on their
-      // name
-      echo  "Life is good";
+  
+  
       echo '<p>';
       echo '<strong>' . $row['category_name'] . ' ' . $row['category_description'] . ':';
-      echo $row['verse'] . '</strong>' . ' - ' . $row['content'];
       echo '</p>';
       }
        
 
-      ?>
+      
     
 
     </div>
