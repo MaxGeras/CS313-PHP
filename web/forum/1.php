@@ -49,12 +49,13 @@ $db = get_db();
     </div>
     <div class="col-sm-8 text-left"> 
 
-    <p>Create a post</p>
+    <h1>Create a post</h1>
     <form action="forum.php">
     Subject: <input type="text" name="subject"><br>
-    <textarea rows="12" cols="50" name="comment">
-     Enter text here...</textarea><br>
-     <input type="submit" name="Submit">
+    Message: <br>
+    <textarea rows="12" cols="50" name="comment" placeholder="Enter text here...">
+    </textarea><br>
+     <input type="submit" value="Submit">
     </form>
                 
 
