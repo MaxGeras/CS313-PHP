@@ -1,6 +1,4 @@
-
 <?php
-
 require "connect.php";
 $db = get_db();
 ?>
@@ -49,7 +47,7 @@ $db = get_db();
     </div>
     <div class="col-sm-8 text-left"> 
 
-    <h1>You are in the category "My Testimony". <br>Create a post.</h1>
+    <h1>You are in the category "Questions about Gospel Teachings". <br>Create a post.</h1>
     <form action="forum.php">
     Subject: <input type="text" name="subject"><br>
     Message: <br>
