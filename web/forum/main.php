@@ -80,18 +80,18 @@ $db = get_db();
             </tr>
             </thead>
         <?php 
+            $myPhp = 0;
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
+                $myPhp++; 
                 echo"<tbody>";
                     echo "<tr>"; 
-                        
                         echo "<td>";
-                        echo "<a href =\"testimony.php\">".$row['category_name']."</a>";
+                        echo "<a href =\"$myPhp.php\">".$row['category_name']."</a>";
                         echo "<br>";
                         echo "(".$row['category_description'].")";
                         echo "</td>";
-
-                        echo "<td>"." 0 "."<\td>";
+                        echo "<td>"." 0 "."</td>";
                     echo "<tr>";
                 echo "</tbody>";
             }
