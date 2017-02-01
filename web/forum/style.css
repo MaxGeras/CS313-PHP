@@ -173,21 +173,8 @@ img.avatar {
     }
 
 
-    th{
-font:italic bold 12px/25px Georgia,serif;
- font-size:17px;
- border:2px solid black;"
-    background-color: #4CAF50;
-    color: white;
+.myLink{
+  background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5FZX6aU1GhLWUfTFzIzkWRkzUvQP_c4Z4KVyOUhv9sh7joJETZQ); 
+  height: 100%; 
+  width: 100%;
 }
-
-
-tr,td{
-border:2px solid black;
-text-align:center;
-background-color: #5F9EA0;
-font-family: "Times New Roman", Times, serif;
- font-style: oblique;
-}
-
-tr:nth-child(even){background-color: #f2f2f2}
