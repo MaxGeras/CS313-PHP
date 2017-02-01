@@ -55,14 +55,8 @@ $db = get_db();
       <p>These guidelines apply to all places where users can post content. This includes, but is not limited to, discussions, comments, guides, product reviews, screenshots, artwork, videos, tags, Steam Workshop, and Steam Greenlight. 
       <br>
       <br>
-
-      When providing feedback, posting information, or discussing a product in Steam, whether it’s negative or positive, please make sure you are being relevant, constructive and polite. Developers take feedback from all kinds of sources into account, even though they may not have the time to respond to every post or question. 
-      <br>
-      <br>
-
       Please note that Administrators/Moderators reserve the right to change/edit/delete/move/merge any content at any time if they feel it is inappropriate, abusive, or incorrectly categorized.</p>
       <hr>
-      <h3>Forums</h3>
       
       <?php>
 
