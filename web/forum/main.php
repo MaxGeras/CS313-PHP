@@ -77,7 +77,7 @@ $db = get_db();
                 echo"<tbody>";
                     echo "<tr>"; 
                         echo "<td>";
-                        echo "<a href =\"$myPost.php\">".$row['category_name']."</a>";
+                        echo "<a href =\"myPost.php\">".$row['category_name']."</a>";
                         echo "<br>";
                         echo "(".$row['category_description'].")";
                         echo "</td>";
