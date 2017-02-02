@@ -4,12 +4,12 @@
   require "connect.php";
   $db = get_db();
 
-  $userName = $_POST['uname'];
-  $pass = $_POST['psw'];
-  $email = $_POST['email'];
-  $address = $_POST['address'];
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
+  $userName = pg_escape_string($_POST['uname']);
+  $pass = pg_escape_string($_POST['psw']);
+  $email = pg_escape_string($_POST['email']);
+  $address = pg_escape_string($_POST['address']);
+  $fname = pg_escape_string($_POST['fname']);
+  $lname = pg_escape_string($_POST['lname']);
 
   $query = "INSERT INTO user(user_name, user_password, user_email, user_address, user_firstName, user_lastName)
   VALUES ('$userName','$pass','$email','$address', '$fname', '$lname')";
