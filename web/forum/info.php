@@ -6,9 +6,9 @@
 
 
     $result = pg_query($db, "INSERT INTO user(user_name, user_password, user_email, user_address, user_firstName, user_lastName)
-    VALUES ('$_POST['uname']','$_POST['psw']','$_POST['email']','$_POST['address']', '$_POST['fname']', '$_POST['lname']');");
+    VALUES ('$_POST[uname]','$_POST[psw]','$_POST[email]','$_POST[address]', '$_POST[fname]', '$_POST[lname]');");
     
-
+  
 
     $username = htmlspecialchars($_POST['uname']);
     $password = htmlspecialchars($_POST['psw']);
