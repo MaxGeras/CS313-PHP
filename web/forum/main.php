@@ -4,7 +4,7 @@
 session_start();
 
 
-if ( !isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 ) 
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 || !isset($_SESSION["pass_user"])) 
 {
   header('location: login.php'); // Redirecting To Other Page
   exit();
@@ -12,7 +12,6 @@ if ( !isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) ==
 
 require "connect.php";
 $db = get_db();
-
 ?>
 
 
