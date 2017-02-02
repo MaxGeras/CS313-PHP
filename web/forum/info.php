@@ -13,7 +13,7 @@
 
  
 
- echo $username;
+ echo $userName;
  echo $pass;
  echo $email;
  echo $fname;
