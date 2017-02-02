@@ -12,9 +12,9 @@
   $lname = $_POST['lname'];
 
  
-    $result = pg_query($db, "INSERT INTO user(user_name, user_password, user_email, user_address, user_firstName, user_lastName)
-    VALUES ('$username','pass','$email','$address', '$fname', '$lname');");
-    
+    $result = "INSERT INTO user(user_name, user_password, user_email, user_address, user_firstName, user_lastName)
+    VALUES ('$username','$pass','$email','$address', '$fname', '$lname')";
+    $result = pg_query($query); 
  
     $_SESSION["login_user"] = $username; // Initializing Session
     $_SESSION["pass_user"] = $pass;

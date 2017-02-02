@@ -4,7 +4,7 @@
 session_start();
 
 
-if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 || !isset($_SESSION["pass_user"])) 
+if ( !isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 ) 
 {
   header('location: login.php'); // Redirecting To Other Page
   exit();
