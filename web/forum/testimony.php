@@ -47,7 +47,9 @@ $db = get_db();
     </div>
     <div class="col-sm-8 text-left"> 
 
-     <h1>Category : "My Testimony"</h1>
+  <h1>Category : "My Testimony"</h1>   
+
+    </div>
     
     <div class="col-sm-2 sidenav" style=" background: url(http://www.mormonhaven.com/mormon_missionary.jpg) no-repeat; background-size: cover; ">
     
