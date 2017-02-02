@@ -39,19 +39,19 @@ INSERT INTO race(type_id, location, name, date)
 #
 #CREATE TABLE public.user
 #(
-#   id SERIAL PRIMARY KEY NOT NULL ,
-#   user_name VARCHAR(100) NOT NULL UNIQUE,
-#   user_password VARCHAR(30) NOT NULL UNIQUE,
-#   user_email VARCHAR(30) NOT NULL UNIQUE,
-#  user_address VARCHAR(30),
+#   id SERIAL       PRIMARY KEY NOT NULL ,
+#   user_name      VARCHAR(100) NOT NULL UNIQUE,
+#   user_password  VARCHAR(30)  NOT NULL UNIQUE,
+#   user_email     VARCHAR(30)  NOT NULL UNIQUE,
+#   user_address   VARCHAR(30),
 #   user_firstName VARCHAR(20) NOT NULL,
-#   user_lastName VARCHAR(30) NOT NULL
+#   user_lastName  VARCHAR(30) NOT NULL
 #);
 #
 #CREATE TABLE public.category
 #(
-#   id SERIAL PRIMARY KEY NOT NULL ,
-#  category_name VARCHAR(50) NOT NULL UNIQUE,
+#  id SERIAL PRIMARY KEY NOT NULL ,
+#  category_name        VARCHAR(50) NOT NULL UNIQUE,
 #  category_description VARCHAR(256) NOT NULL
 #);
 #
@@ -110,3 +110,52 @@ VALUES ('Mosiah', 16 , 29 , 'He is the light and the life of the world; yea, a l
 
 
 
+CREATE TABLE movie
+(
+  id SERIAL PRIMARY KEY NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  length SMALLINT,
+  year SMALLINT,
+  rating VARCHAR(10) 
+);
+
+CREATE TABLE actor
+(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE movie_actor
+(
+   id SERIAL PRIMARY KEY NOT NULL,
+   movie_id INT NOT NULL REFERENCES movie(id),
+   actor_id INT NOT NULL REFERENCES actor(id),
+   character VARCHAR(100) 
+);
+
+
+INSERT INTO movie(title, length, year, rating) 
+VALUES ('STAR WArs IV: A New Hope', NULL, 1977, 'PG');
+
+
+INSERT INTO movie(title, rating) 
+VALUES ('Indiana Jones and The last Crusade', 'PG-13');
+
+UPDATE movie SET year=1989 WHERE id=2;
+SELECT * FROM movie WHERE rating = 'PG';
+
+INSERT INTO actor(name) 
+VALUES ('Mark Hamill'), ('Harrison Ford'), ('Carrie John'), ('Mark John');
+
+INSERT INTO movie_actor(movie_id, actor_id, character)
+VALUES (1,1,'Luke Skywalker'), (1,2,'Han Solo'), (1,3, 'Princess Lie'), 
+(2, 2, 'Indiana Jones'), (2,4, 'Henry Jones Sr.');
+
+
+SELECT * FROM movie m INNER JOIN movie_actor ma ON m.id = ma.movie_id;
+SELECT title FROM movie m INNER JOIN movie_actor ma ON m.id = ma.movie_id INNER JOIN actor a ON a.id = ma.actor_id
+where a.name = 'Mark Hamill';
+
+
+CREATE USER php_movie_guy WITH PASSWORD 'orange';
+GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO php_movie_guy;
