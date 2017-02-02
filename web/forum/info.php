@@ -25,6 +25,6 @@
   $_SESSION["login_user"] = $userName; // Initializing Session
   $_SESSION["pass_user"] = $pass;
 
-  //header('location: main.php'); 
+  header('location: main.php'); 
   
   ?>
