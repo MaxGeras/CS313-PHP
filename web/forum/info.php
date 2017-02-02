@@ -15,6 +15,13 @@
   VALUES('" .$userName. "','" .$pass. "','" .$email. "','" .$address. "', '" .$fname. "', '" .$lname. "')";
   $result = pg_query($query); 
 
+
+   if (!$result) { 
+            $errormessage = pg_last_error(); 
+            echo "Error with query: " . $errormessage; 
+            exit(); 
+   }
+
   pg_close();
  
   $_SESSION["login_user"] = $userName; // Initializing Session
