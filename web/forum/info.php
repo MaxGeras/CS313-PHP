@@ -15,7 +15,7 @@
         $sql = 'INSERT INTO user (user_name, user_password, user_email, user_address, user_firstname, user_lastname)
         VALUES (:user_name, :user_password, :user_email, :user_address, :user_firstname, :user_lastname)';
         
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $db->prepare($sql);
         
         // pass values to the statement
         $stmt->bindValue(':user_name', $name);
@@ -29,7 +29,7 @@
         $stmt->execute();
         
         // return generated id
-        return $this->pdo->lastInsertId('user_id_seq');
+        return $db->lastInsertId('user_id_seq');
     }
 
 
@@ -43,14 +43,10 @@
 
 
 
-try {
     // insert a stock into the stocks table
     $id = $db->insertUserInfo( $userName, $pass, $email, $address, $fname, $lname);
     echo 'The user has been inserted with the id ' . $id . '<br>';
-} 
-catch (PDOException $e) {
-    echo $e->getMessage();
-}
+
   
 $_SESSION["login_user"] = $userName; // Initializing Session
 $_SESSION["pass_user"] = $pass;
