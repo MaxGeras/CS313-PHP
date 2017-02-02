@@ -1,4 +1,14 @@
 <?php
+
+session_start();
+
+
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 || !isset($_SESSION["pass_user"])) 
+{
+  header('location: login.php'); // Redirecting To Other Page
+  exit();
+}
+
 require "connect.php";
 $db = get_db();
 ?>
@@ -47,7 +57,7 @@ $db = get_db();
     </div>
     <div class="col-sm-8 text-left"> 
 
-  <h1>Category : "My Testimony"</h1>   
+    <h1>Category : "My Testimony"</h1>   
 
     </div>
     
