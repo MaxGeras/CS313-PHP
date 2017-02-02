@@ -11,7 +11,7 @@
   $fname = pg_escape_string($_POST['fname']);
   $lname = pg_escape_string($_POST['lname']);
 
-  $query = "INSERT INTO user(user_name, user_password, user_email, user_address, user_firstName, user_lastName)
+  $query = "INSERT INTO user(user_name, user_password, user_email, user_address, user_firstname, user_lastname)
   VALUES('" .$userName. "','" .$pass. "','" .$email. "','" .$address. "', '" .$fname. "', '" .$lname. "')";
   $result = pg_query($query); 
 
