@@ -14,7 +14,7 @@ session_start(); // Starting Session
 </head>
 <body>
 
-<form class="myForm" action="info.php">
+<form class="myForm" action="info.php" method="post">
   <div class="imgcontainer">
   <p>Login Form</p>
     <img src="https://s-media-cache-ak0.pinimg.com/originals/35/30/e8/3530e8ae72248e1f7845abe09367defe.jpg" alt="Avatar" class="avatar">
