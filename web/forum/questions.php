@@ -1,6 +1,4 @@
-
 <?php
-
 require "connect.php";
 $db = get_db();
 ?>
@@ -48,45 +46,9 @@ $db = get_db();
     <div class="col-sm-2 sidenav " style=" background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ_DXkNq-Y29ql3Iun0s63Ro9z1veJZcqHuVDNrWnvhzQHq28y) no-repeat; background-size: cover; ">
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>These guidelines apply to all places where users can post content. This includes, but is not limited to, discussions, comments, guides, product reviews, screenshots, artwork, videos, tags, Steam Workshop, and Steam Greenlight. 
-      <br>
-      <br>
-      Please note that Administrators/Moderators reserve the right to change/edit/delete/move/merge any content at any time if they feel it is inappropriate, abusive, or incorrectly categorized.</p>
-      <hr>
-      
-      <?php>
 
-     
-      $statement = $db->prepare("SELECT category_name, category_description FROM category");
-      $statement->execute();
-      ?>
-
-
-    <table >
-        <thead>
-            <tr>
-            <th>Forums</th>
-            <th>Users</th>
-            </tr>
-            </thead>
-        <?php 
-            $myPhp = 0;
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-            {
-                echo"<tbody>";
-                    echo "<tr>"; 
-                        echo "<td>";
-                        echo "<a href =\"$myPost.php\">".$row['category_name']."</a>";
-                        echo "<br>";
-                        echo "(".$row['category_description'].")";
-                        echo "</td>";
-                        echo "<td>"." 0 "."</td>";
-                    echo "<tr>";
-                echo "</tbody>";
-            }
-        ?>
-    </table>
+     <h1>Category : "Questions about the Gospel"</h1>
+                
 
     </div>
     
