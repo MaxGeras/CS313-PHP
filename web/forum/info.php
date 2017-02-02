@@ -12,8 +12,10 @@
   $lname = pg_escape_string($_POST['lname']);
 
   $query = "INSERT INTO user(user_name, user_password, user_email, user_address, user_firstName, user_lastName)
-  VALUES ('$userName','$pass','$email','$address', '$fname', '$lname')";
+  VALUES ('" .$userName. "','" .$pass. "','" .$email. "','" .$address. "', '" .$fname. "', '" .$lname. "')";
   $result = pg_query($query); 
+
+  pg_close();
  
   $_SESSION["login_user"] = $userName; // Initializing Session
   $_SESSION["pass_user"] = $pass;
