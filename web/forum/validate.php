@@ -26,7 +26,7 @@ else
     	if(empty($rows))
     	{
            header('location: login.php'); // Redirecting To Other Page
-		   exit();
+		   die();
    		}	
     	else
 		{
@@ -36,7 +36,7 @@ else
 
 		header('location: main.php'); // Redirecting To Other Page
 	
-		exit();
+		die();
 	   	}
   }
 
