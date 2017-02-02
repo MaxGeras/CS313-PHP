@@ -50,8 +50,8 @@ $db = get_db();
     <h1>Enjoy your time with us. <br>Create a post.</h1>
     <form action="forum.php" method="post">
     Subject: <input type="text" name="subject"><br>
-    <select>
-      <option value="" disabled="disabled"  name="forum" selected="selected">Please select a category</option>
+    <select name="forum">
+      <option value="" disabled="disabled" selected="selected">Please select a category</option>
       <option value="Testimony">My Testimony</option>
       <option value="Question">Questions about the Gospel</option>
       <option value="Story">Funny Missionary Stories</option>
