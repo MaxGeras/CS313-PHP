@@ -11,9 +11,8 @@
   $fname = pg_escape_string($_POST['fname']);
   $lname = pg_escape_string($_POST['lname']);
 
-  $query =  
-  INSERT INTO user(user_name, user_password, user_email, user_address, user_firstname, user_lastname)
-  VALUES('" .$userName. "','" .$pass. "','" .$email. "','" .$address. "', '" .$fname. "', '" .$lname. "');
+  $query = " INSERT INTO user (id, user_name, user_password, user_email, user_address, user_firstname, user_lastname)
+  VALUES ( 1, '" .$userName. "','" .$pass. "','" .$email. "','" .$address. "', '" .$fname. "', '" .$lname. "')";
   
   $result = pg_query($query); 
 
@@ -23,7 +22,7 @@
            exit(); 
    }
 
-  pg_close($db);
+  pg_close();
  
   $_SESSION["login_user"] = $userName; // Initializing Session
   $_SESSION["pass_user"] = $pass;
