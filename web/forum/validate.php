@@ -8,7 +8,6 @@ if (!isset($_POST['login']) || strlen(trim($_POST['login'])) == 0 || !isset($_PO
 }
 else
 {
-
 	require "connect.php";
 	$db = get_db();
 
@@ -23,13 +22,13 @@ else
 	$stmt->execute();
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    	if(empty($rows))
-    	{
+    if(empty($rows))
+    {
            header('location: login.php'); // Redirecting To Other Page
 		   die();
-   		}	
-    	else
-		{
+   	}	
+    else
+	{
              
 		$_SESSION["login_user"] = $username; // Initializing Session
 		$_SESSION["pass_user"] = $username;
@@ -37,7 +36,7 @@ else
 		header('location: main.php'); // Redirecting To Other Page
 	
 		die();
-	   	}
-  }
+	}
+ }
 
 ?> 
