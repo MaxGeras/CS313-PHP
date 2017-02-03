@@ -16,7 +16,7 @@ else
 	$username = htmlspecialchars($_POST['login']);
 	$password = htmlspecialchars($_POST['password']);
 
-	$stmt = $db->prepare('SELECT * FROM user WHERE user_name=:user_name AND user_password=:user_password');
+	$stmt = $db->prepare('SELECT * FROM myuser WHERE user_name=:user_name AND user_password=:user_password');
 	$stmt->bindValue(':user_name', $username, PDO::PARAM_STR);
 	$stmt->bindValue(':user_password', $password, PDO::PARAM_STR);
 	$stmt->execute();

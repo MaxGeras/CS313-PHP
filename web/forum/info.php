@@ -32,9 +32,7 @@ try{
         
       // return generated id
       $id = $db->lastInsertId('user_id_seq');
-  
-  
-     echo 'The user has been inserted with the id ' . $id . '<br>';
+
 }
 catch(PDOException $ex)
 {
@@ -46,6 +44,7 @@ catch(PDOException $ex)
 $_SESSION["login_user"] = $userName; // Initializing Session
 $_SESSION["pass_user"] = $pass;
 
-//header('location: main.php'); 
-//die();
+header('location: main.php'); 
+die();
+
 ?>
