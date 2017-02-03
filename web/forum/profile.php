@@ -3,10 +3,10 @@
 // Starting Session
 session_start(); 
 
-if (!isset($_POST['login']) || strlen(trim($_POST['login'])) == 0 || !isset($_POST['password'])) 
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 || !isset($_SESSION["pass_user"])) 
 {
-	header('location: login.php'); // Redirecting To Other Page
-	die();
+ header('location: login.php'); // Redirecting To Other Page
+  die();
 }
 else
 {
@@ -17,8 +17,8 @@ else
 
 	// Find an existing password and login
 	$stmt = $db->prepare('SELECT * FROM myuser WHERE user_name=:user_name AND user_password =:user_password');
-	$stmt->bindValue(':user_name', $username, PDO::PARAM_STR);
-	$stmt->bindValue(':user_password', $password, PDO::PARAM_STR);
+	$stmt->bindValue(':user_name', $_SESSION["login_user"], PDO::PARAM_STR);
+	$stmt->bindValue(':user_password', $_SESSION["pass_user"], PDO::PARAM_STR);
 	$stmt->execute();
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
