@@ -35,7 +35,8 @@ INSERT INTO race(type_id, location, name, date)
      INSERT INTO category(category_name, category_description) VALUES('Funny Missionary Stories', 'Post your entertaining mission stories');
 CREATE USER ta_user WITH PASSWORD 'ta_pass';
 GRANT SELECT, INSERT, UPDATE ON scripture TO ta_user;
-///////////////////////////////////// week 04 ////////////////////////////////////////////////////////////////////////
+
+#///////////////////////////////////// week 04 ////////////////////////////////////////////////////////////////////////
 #
 CREATE TABLE public.user
 (
@@ -45,7 +46,7 @@ CREATE TABLE public.user
    user_email     VARCHAR(30)  NOT NULL UNIQUE,  
    user_address   VARCHAR(30),
    user_firstName VARCHAR(20) NOT NULL,
- user_lastName  VARCHAR(30) NOT NULL
+    user_lastName  VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE public.category
@@ -58,9 +59,9 @@ CREATE TABLE public.category
 CREATE TABLE public.post
 (
    id SERIAL PRIMARY KEY NOT NULL ,
-  user_id INT REFERENCES public.user(id) NOT NULL,
-  category_id INT REFERENCES public.category(id) NOT NULL,
-  post_text TEXT NOT NULL,
+   user_id INT REFERENCES public.user(id) NOT NULL,
+   category_id INT REFERENCES public.category(id) NOT NULL,
+   post_text TEXT NOT NULL,
    post_date DATE NOT NULL,
    post_subject TEXT NOT NULL
 );    
