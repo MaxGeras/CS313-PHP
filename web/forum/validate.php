@@ -31,7 +31,7 @@ else
 	{
              
 		$_SESSION["login_user"] = $username; // Initializing Session
-		$_SESSION["pass_user"] = $username;
+		$_SESSION["pass_user"] = $password;
 
 		header('location: main.php'); // Redirecting To Other Page
 	
