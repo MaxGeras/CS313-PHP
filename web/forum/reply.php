@@ -1,15 +1,26 @@
-
 <?php
 
+session_start();
+
+
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 || !isset($_SESSION["pass_user"])) 
+{
+  header('location: login.php'); // Redirecting To Other Page
+  exit();
+}
 require "connect.php";
 $db = get_db();
-?>
+
+$replySubject = $_GET['reply'];
+$_SESSION["subject"] = $replySubject;
+
+ ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>My Category</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -31,9 +42,9 @@ $db = get_db();
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="main.php">Home</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
+        <li><a href="category.php">Create Category</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -49,13 +60,14 @@ $db = get_db();
     </div>
     <div class="col-sm-8 text-left"> 
 
-    <h1>You are in the category "My Testimony". <br>Create a post.</h1>
-    <form action="forum.php">
-    Subject: <input type="text" name="subject"><br>
-    Message: <br>
-    <textarea rows="12" cols="50" name="comment" placeholder="Enter text here..."></textarea>
+    <h1><?php echo $_SESSION["login_user"]?>, write your answer :</h1>
+    <form action="savereply.php" method="post">
+    Post Subject: <?php echo '<input type="text" name="subject" value="'.$replySubject.'" required>'?>
     <br>
-    <input type="submit" value="Submit">
+    Reply : <br>
+    <textarea rows="12" cols="50" name="reply" placeholder="Enter text here..." required></textarea>
+    <br>
+    <input type="submit" value="Post">
     </form>
                 
 

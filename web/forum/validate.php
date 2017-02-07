@@ -1,7 +1,5 @@
 <?php
-
-// Starting Session
-session_start(); 
+session_start(); // Starting Session
 
 if (!isset($_POST['login']) || strlen(trim($_POST['login'])) == 0 || !isset($_POST['password'])) 
 {
@@ -19,15 +17,14 @@ else
 	$username = htmlspecialchars($_POST['login']);
 	$password = htmlspecialchars($_POST['password']);
 
-    // Find an existing password and login
 	$stmt = $db->prepare('SELECT * FROM myuser WHERE user_name=:user_name AND user_password =:user_password');
 	$stmt->bindValue(':user_name', $username, PDO::PARAM_STR);
 	$stmt->bindValue(':user_password', $password, PDO::PARAM_STR);
 	$stmt->execute();
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Assign Array
 	foreach ($rows as $row){ 
+	       $_SESSION["id_user"] = $row['id']; 
 	}
 	
     
@@ -38,15 +35,13 @@ else
    	}	
     else
 	{
-        // Initializing Session     
-		$_SESSION["login_user"] = $username; 
+             
+		$_SESSION["login_user"] = $username; // Initializing Session
 		$_SESSION["pass_user"] = $password;
 
-		// Redirecting To Other Page
-		header('location: main.php'); 
+		header('location: main.php'); // Redirecting To Other Page
 	
 		die();
 	}
 }
-
 ?> 
