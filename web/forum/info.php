@@ -23,10 +23,6 @@
           :user_address, :user_firstname, :user_lastname)";
         
         $stmt = $db->prepare($sql);
-    //    INSERT INTO myuser(user_name, user_password, user_email, user_address, user_firstName, user_lastName) 
-    //    VALUES (:user_name, :user_password, :user_email, :user_address, :user_firstName,
-    //     :user_lastName)
-     //    ");
         
         // pass values to the statement
         $stmt->bindValue(':user_name', $userName);

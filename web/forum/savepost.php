@@ -5,7 +5,12 @@
 if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 || !isset($_SESSION["pass_user"])   ) 
 {
   header('location: login.php'); // Redirecting To Other Page
-  exit();
+  die();
+}
+else if(!isset($_POST['forum']))
+{
+  header('location: myPost.php'); // Redirecting To Other Page
+  die();
 }
  
 require "connect.php";

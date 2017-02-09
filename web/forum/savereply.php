@@ -2,7 +2,8 @@
   session_start(); // Starting Session
 
 
-if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 || !isset($_SESSION["pass_user"]) || !isset($_SESSION["subject"]) ) 
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 ||
+ !isset($_SESSION["pass_user"]) || !isset($_SESSION["subject"]) ) 
 {
   header('location: login.php'); // Redirecting To Other Page
   exit();
@@ -23,24 +24,20 @@ $stmt = $db->prepare('SELECT * FROM post WHERE post_subject=:post_subject');
   $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
    
    foreach ($rows as $row){ 
-    $id_user = $row['id'];
-    echo $id_user."<br>";
-
+    $id = $row['id'];
   }
   
-  // echo  $_SESSION['id_user']."<br>";
-
-
-
+   $_SESSION["user_post"] = $id;
  try{
 
-      $sql = "INSERT INTO reply(post_id, reply_text) 
-        VALUES (:post_id, :reply_text)";
+      $sql = "INSERT INTO reply(post_id, user_id, reply_text) 
+        VALUES (:post_id, :user_id, :reply_text)";
       
       $stmt = $db->prepare($sql);
         
         // pass values to the statement
-        $stmt->bindValue(':post_id', $id_user);
+        $stmt->bindValue(':post_id', $id);
+        $stmt->bindValue(':user_id', $_SESSION["id_user"]);
         $stmt->bindValue(':reply_text', $reply);
       
         
@@ -57,6 +54,6 @@ $stmt = $db->prepare('SELECT * FROM post WHERE post_subject=:post_subject');
     echo "Error connecting to DB. Details: $ex";
   }
  
-//header('location: forum.php'); 
+header('location: replypage.php?id='.$id.''); 
 die();
 ?>

@@ -40,7 +40,7 @@ $db = get_db();
         <li class="active"><a href="main.php">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="category.php">Create Category</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="forum.php">Forum</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
@@ -59,44 +59,78 @@ $db = get_db();
 
 
                 
-    <?php
-  
-        foreach ($db->query
-            (' 
-              SELECT * FROM myuser muser 
-              INNER JOIN post mpost ON muser.id = mpost.user_id 
-              INNER JOIN category mcat ON mcat.id = mpost.category_id
-           ') as $row)
-        {
-        
-        // Dsiplay a Post as table 
-      echo '<form action="reply.php" method="get">';
+  <?php
+
+      $stmtPost = $db->prepare('SELECT * FROM post p  
+      INNER JOIN category c ON c.id = p.category_id
+      INNER JOIN myuser u ON u.id = p.user_id
+      WHERE p.id=:id');
+      $stmtPost->bindValue(':id', $_SESSION["user_post"], PDO::PARAM_STR);
+      $stmtPost->execute();
+      while ($rowPost = $stmtPost->fetch(PDO::FETCH_ASSOC))
+      {
         echo '<table>';
           echo '<thead>';
             echo '<tr>';
-            echo '<th>'.$row['user_firstname']." ".$row['user_lastname'].'</th>';
-            echo '<th>'.$row['category_name'].'</th>';
-            echo '<th>'.$row['post_subject'].'</th>';
-            echo '<th>'.$row['post_date'].'</th>';
+            echo '<th>'.$rowPost['user_firstname']." ".$rowPost['user_lastname'].'</th>';
+            echo '<th>'.$rowPost['category_name'].'</th>';
+            echo '<th>'.$rowPost['post_subject'].'</th>';
+            $subject = $rowPost['post_subject'];
+            echo '<th>'.$rowPost['post_date'].'</th>';
             echo '</tr>';
           echo '</thead>';       
             echo '<tbody>';
                     echo '<tr>'; 
-                    echo  '<td colspan="4">'.$row['post_text'].'</td>';
+                    echo  '<td colspan="4">'.$rowPost['post_text'].'</td>';
                     echo '<tr>';
             echo '</tbody>';        
         echo '</table>';
-  
-        echo '<button name="reply" type="submit" 
-                  value="'.$row['post_subject'].'"> Reply </button>';
-       echo '</form>';
-        echo '<br>';
-        echo '<br>';
-        echo '<br>';
+      }
 
-        }
+ 
+
+
+  $stmt = $db->prepare('SELECT * FROM reply WHERE post_id=:post_id ');
+  $stmt->bindValue(':post_id', $_SESSION["user_post"], PDO::PARAM_STR);
+  $stmt->execute();
+  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  foreach ($rows as $row) {
+ 
+
+      
+      //  Display Reply User
+      $stmtReply = $db->prepare('SELECT * FROM myuser WHERE id=:id ');
+      $stmtReply->bindValue(':id', $row['user_id'], PDO::PARAM_STR);
+      $stmtReply->execute();
+      while ($rowReply = $stmtReply->fetch(PDO::FETCH_ASSOC))
+      {
+        echo '<table>';
+          echo '<thead>';
+            echo '<tr>';
+            echo '<th>'.$rowReply['user_firstname']." ".$rowReply['user_firstname'].'</th>';
+            echo '</tr>';
+          echo '</thead>';       
+            echo '<tbody>';
+                    echo '<tr>'; 
+                    echo  '<td colspan="2">'.$row['reply_text'].'</td>';
+                    echo '<tr>';
+            echo '</tbody>';        
+        echo '</table>';
+        echo "<br>";
+      }
+       
+  }
+
+     echo '<form action="reply.php">';
+
+     echo '<button name="reply" type="submit" 
+              value="'.$subject.'"> Reply </button>';
+     echo '</form>';
+      
     ?>
-    </div>
+    
+     
+     </div>
     
     <div class="col-sm-2 sidenav" style=" 
     background: url(http://www.mormonhaven.com/mormon_missionary.jpg) 
