@@ -1,28 +1,35 @@
 <?php
+
 session_start();
 
-if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 ||
- !isset($_SESSION["pass_user"])) 
+
+if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 0 || !isset($_SESSION["pass_user"])) 
 {
   header('location: login.php'); // Redirecting To Other Page
   exit();
 }
-
 require "connect.php";
 $db = get_db();
+
+if(isset($_SESSION["check"]))
+{
+  $replySubject = $_GET['reply'];
+  $_SESSION["subject"] = $replySubject;
+}
+ 
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title> LDS Forum Posts </title>
+  <title>My Category</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="style1.css" rel="stylesheet">
+   <link href="style1.css" rel="stylesheet">
 </head>
 <body>
 
@@ -34,12 +41,12 @@ $db = get_db();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="myPost.php">Create Post</a>
+      <a class="navbar-brand" href="#">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="main.php">Home</a></li>
-        <li><a href="#">Main Forum</a></li>
+        <li><a href="forum.php">Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
@@ -56,54 +63,21 @@ $db = get_db();
     </div>
     <div class="col-sm-8 text-left"> 
 
-     <h1 style="text-align: center; font-size: 40px; 
-     font-weight: 900;text-decoration: underline;">LDS Forum Posts</h1>
-
-
+    <h1><?php echo $_SESSION["login_user"]?>, write your answer :</h1>
+    <form action="savereply.php" method="post">
+    Post Subject: <?php echo '<input type="text" name="subject" value="'.$_SESSION["subject"].'" 
+                                                    required>'?>
+    <br>
+    Reply : <br>
+    <textarea rows="12" cols="50" name="reply" placeholder="Enter text here..." required></textarea>
+    <br>
+    <input type="submit" class="button button4" value="Reply">
+    </form>
                 
-    <?php
-  
-        foreach ($db->query
-            (' 
-              SELECT * FROM myuser muser 
-              INNER JOIN post mpost ON muser.id = mpost.user_id 
-              INNER JOIN category mcat ON mcat.id = mpost.category_id
-              ORDER  BY mcat.category_name asc;
-           ') as $row)
-        {
-        
-        // Dsiplay a Post as table 
-      echo '<form action="reply.php" method="get">';
-        echo '<table>';
-          echo '<thead>';
-            echo '<tr>';
-            echo '<th>'.$row['user_firstname']." ".$row['user_lastname'].'</th>';
-            echo '<th style="color:#1E90FF">'.$row['category_name'].'</th>';
-            echo '<th style="text-decoration: underline; color:#ADFF2F">'.$row['post_subject'].'</th>';
-            echo '<th>'.$row['post_date'].'</th>';
-            echo '</tr>';
-          echo '</thead>';       
-            echo '<tbody>';
-                    echo '<tr>'; 
-                    echo  '<td colspan="4">'.$row['post_text'].'</td>';
-                    echo '<tr>';
-            echo '</tbody>';        
-        echo '</table>';
-  
-        echo '<button class="button button4" name="reply" type="submit" 
-                  value="'.$row['post_subject'].'">Join Conversation</button>';
-       echo '</form>';
-        echo '<br>';
-        echo '<br>';
-        echo '<br>';
 
-        }
-    ?>
     </div>
     
-    <div class="col-sm-2 sidenav" style=" 
-    background: url(http://www.mormonhaven.com/mormon_missionary.jpg) 
-    no-repeat; background-size: cover; ">
+    <div class="col-sm-2 sidenav" style=" background: url(http://www.mormonhaven.com/mormon_missionary.jpg) no-repeat; background-size: cover; ">
     
     </div>
   </div>
@@ -115,8 +89,9 @@ $db = get_db();
         <li class="active"><a href="#">Posted by: Max Gerasymenko</a></li>
         <li><a href="#">Contact information: ger14009@byui.edu</a></li>
         <li><a href="#">Copyright © 2017. All rights reserved.</a></li>
-  
+      
       </ul>
     </div>
 </footer>
+
 </body>

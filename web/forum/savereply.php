@@ -28,16 +28,19 @@ $stmt = $db->prepare('SELECT * FROM post WHERE post_subject=:post_subject');
   }
   
    $_SESSION["user_post"] = $id;
+    $time = date('Y-m-d H:i:s');
+
  try{
 
-      $sql = "INSERT INTO reply(post_id, user_id, reply_text) 
-        VALUES (:post_id, :user_id, :reply_text)";
+      $sql = "INSERT INTO reply(post_id, user_id, reply_date, reply_text) 
+        VALUES (:post_id, :user_id,:reply_date, :reply_text)";
       
       $stmt = $db->prepare($sql);
         
         // pass values to the statement
         $stmt->bindValue(':post_id', $id);
         $stmt->bindValue(':user_id', $_SESSION["id_user"]);
+        $stmt->bindValue(':reply_date', $time);
         $stmt->bindValue(':reply_text', $reply);
       
         

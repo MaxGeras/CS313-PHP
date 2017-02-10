@@ -46,12 +46,12 @@ else
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="myPost.php">Post</a>
+      <a class="navbar-brand" href="myPost.php">Create Post</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="main.php">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
         <li><a href="#">Contact</a></li>
       </ul>

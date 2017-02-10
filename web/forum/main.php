@@ -36,16 +36,17 @@ $db = get_db();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="myPost.php">Post</a>
+      <a class="navbar-brand" href="myPost.php">Create Post</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="profile.php">Profile</a></li>
-        <li><a href="forum.php">Forum</a></li>
+        <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a>Hi, <?php echo $_SESSION["login_user"]; ?></a></li> 
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
       </ul>
     </div>
@@ -68,31 +69,51 @@ $db = get_db();
     <table >
         <thead>
             <tr>
-            <th>Categories</th>
-            <th>Users</th>
+            <th style="text-align: center; font-size:25px">By Categories  
+            <p style="font-size:14px; color: white"> (Add your category to this table)</p> </th>
+            <th style="text-align: center; font-size:25px"> Available Posts</th>
             </tr>
             </thead>
         <?php 
-            foreach ($db->query('SELECT * FROM category') as $row)
+            // Initial count
+            $i = 0;
+            foreach ($db->query('SELECT * FROM category ORDER  BY category_name asc') as $row)
             {
-                echo"<tbody>";
-                    echo "<tr>"; 
-                        echo "<td>";
-                        echo "<a href =\"myPost.php\">".$row['category_name']."</a>";
-                        echo "<br>";
-                        echo "(".$row['category_description'].")";
-                        echo "</td>";
-                        echo "<td>"." 0 "."</td>";
-                    echo "<tr>";
-                echo "</tbody>";
+              $category = $row['category_name'];
+              $id = $row['id'];
+
+              // Find how many posts is releted to the category 
+              $stmtPost = $db->prepare('SELECT * FROM post WHERE category_id=:category_id');
+              $stmtPost->bindValue(':category_id', $id, PDO::PARAM_STR);
+              $stmtPost->execute();
+              $posts = $stmtPost->fetchAll(PDO::FETCH_ASSOC);
+              
+              // Calculating how many posts
+              foreach ($posts as $post) {
+                  if($id == $post['category_id'])
+                  {
+                    $i++;
+                  }
+              }
+                // Table body
+                echo '<tbody>';
+                    echo '<tr>'; 
+                        echo '<td>';
+                        echo "<a href='association.php?id=$id'>$category</a>";
+                        //echo '<br>';
+                        echo "  ".'('.$row['category_description'].')';
+                        echo '</td>';
+                        echo '<td style="text-align: center;color: #AFEEEE;">'.$i.'</td>';
+                    echo '<tr>';
+                echo '</tbody>';
+                $i = 0;
             }
         ?>
     </table>
 
     </div>
     
-    <div class="col-sm-2 sidenav" style=" background: url(http://www.mormonhaven.com/mormon_missionary.jpg) no-repeat; background-size: cover; ">
-    
+    <div class="col-sm-2 sidenav" style="background:url(http://www.mormonhaven.com/mormon_missionary.jpg) no-repeat; background-size: cover; ">
     </div>
   </div>
 </div>
@@ -103,7 +124,6 @@ $db = get_db();
         <li class="active"><a href="#">Posted by: Max Gerasymenko</a></li>
         <li><a href="#">Contact information: ger14009@byui.edu</a></li>
         <li><a href="#">Copyright © 2017. All rights reserved.</a></li>
-        <li><a href="#">LDS Forum</a></li>
       </ul>
     </div>
 </footer>

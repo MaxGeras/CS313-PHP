@@ -30,6 +30,11 @@ else
     
     if(empty($rows))
     {
+     ?>
+    	  <script type=\"text/javascript\">	
+		  document.getElementById("message").innerHTML = "Credentials were not found"; 
+		  </script>
+    <?php
            header('location: login.php'); // Redirecting To Other Page
 		   die();
    	}	

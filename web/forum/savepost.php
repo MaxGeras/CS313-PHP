@@ -20,11 +20,8 @@ $db = get_db();
   $subject = $_POST['subject'];
   $text = $_POST['comment'];
   $id_cat = $_POST['forum'];
-  $time = '2017-02-03';
+  $time = date('Y-m-d H:i:s');
 
-
-echo "TIME : ".$_SESSION['id_user']."<br>";
-echo $id_cat."<br>";
  try{
 
       $sql = "INSERT INTO post(user_id, category_id, post_text, post_date, post_subject) 

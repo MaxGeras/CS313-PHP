@@ -34,12 +34,12 @@ $db = get_db();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="myPost.php">Create Post</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="main.php">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
@@ -57,7 +57,7 @@ $db = get_db();
     <div class="col-sm-8 text-left"> 
 
     <h1>Enjoy your time with us. <br>Create your own category. Involve more people....</h1>
-    <form action="save.php" method="post">
+    <form action="savecategory.php" method="post">
     New Category Name: <input type="text" name="category" required><br>
     Describe your category: <br>
     <textarea rows="12" cols="50" name="describe" placeholder="Enter text here..." required></textarea>

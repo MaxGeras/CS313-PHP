@@ -61,8 +61,8 @@ CREATE TABLE public.category
     user_id INT REFERENCES public.myuser(id) NOT NULL,
     category_id INT REFERENCES public.category(id) NOT NULL,
     post_text TEXT NOT NULL,
-     post_date Timestamp NOT NULL,
-     post_subject TEXT NOT NULL
+    post_date Timestamp NOT NULL,
+    post_subject TEXT NOT NULL
   );    
 
 CREATE TABLE public.reply
@@ -70,6 +70,7 @@ CREATE TABLE public.reply
   id SERIAL PRIMARY KEY NOT NULL ,
   post_id INT REFERENCES public.post(id) NOT NULL,
   user_id INT NOT NULL,
+  reply_date Timestamp NOT NULL,
   reply_text TEXT NOT NULL
 );
 
@@ -180,3 +181,27 @@ CREATE TABLE scripture_topic
    scr_id INT NOT NULL REFERENCES scripture(id),
    top_id INT NOT NULL REFERENCES topic(id)
 );
+
+CREATE DATABASE notebok;
+
+CREATE TABLE course
+(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(80) NOT NULL UNIQUE,
+  number VARCHAR(10) NOT NULL UNIQUE
+);
+
+CREATE TABLE note
+(
+  id SERIAL PRIMARY KEY NOT NULL,
+  course_id INT NOT NULL REFERENCES course(id),
+  content TEXT NOT NULL,
+  date DATE NOT NULL     
+);
+
+CREATE USER note_user WITH PASSWORD 'orange';
+GRANT INSERT, SELECT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO note_user;
+GRANT USAGE, SELECT ON ALL SEQUENCEs IN SCHEMA public TO note_user;    
+
+
+INSERT INTO course(name, number) VALUES ('Web Enginnering II', 'CS 313'); 

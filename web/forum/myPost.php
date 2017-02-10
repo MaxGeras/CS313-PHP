@@ -37,12 +37,12 @@ $id = 0;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">Create Post</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="main.php">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
@@ -78,7 +78,7 @@ $id = 0;
     Message: <br>
     <textarea rows="12" cols="50" name="comment" placeholder="Enter text here..." required></textarea>
     <br>
-    <input type="submit" value="Submit">
+    <input type="submit" class="button button3" value="Post">
     </form>
                 
     </div>
@@ -95,7 +95,6 @@ $id = 0;
         <li class="active"><a href="#">Posted by: Max Gerasymenko</a></li>
         <li><a href="#">Contact information: ger14009@byui.edu</a></li>
         <li><a href="#">Copyright © 2017. All rights reserved.</a></li>
-        <li><a href="#">LDS Forum</a></li>
       </ul>
     </div>
 </footer>
