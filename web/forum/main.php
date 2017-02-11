@@ -43,7 +43,23 @@ $db = get_db();
         <li class="active"><a href="profile.php">Profile</a></li>
         <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="contribution.php">Manage my Contribution</a></li>
+        <!-- DROP DWON OPTIONS--> 
+        <li>
+          <div class="dropdown1">
+          <button class="dropbtn1">Categories</button>
+          <div class="dropdown-content1">
+          <?php
+           foreach ($db->query('SELECT * FROM category ORDER  BY category_name asc') as $rows)
+            {
+              $categoryDrop= $rows['category_name'];
+              $idDrop = $rows['id'];
+              echo "<a href='association.php?id=$idDrop'>$categoryDrop</a>"; 
+            }
+          ?>
+            </div>
+          </div>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a>Hi, <?php echo $_SESSION["login_user"]; ?></a></li> 
@@ -99,9 +115,12 @@ $db = get_db();
                 echo '<tbody>';
                     echo '<tr>'; 
                         echo '<td>';
-                        echo "<a href='association.php?id=$id'>$category</a>";
-                        //echo '<br>';
+                        echo '<div class="dropdown">';
+                        echo "<span><a href='association.php?id=$id'>$category</a></span>";
                         echo "  ".'('.$row['category_description'].')';
+                        echo '<div class="dropdown-content">';
+                        echo '<p>Hi, '.$_SESSION["login_user"].', have a good conversation!</p>';   
+                        echo '</div>';
                         echo '</td>';
                         echo '<td style="text-align: center;color: #AFEEEE;">'.$i.'</td>';
                     echo '<tr>';

@@ -41,7 +41,7 @@ $db = get_db();
         <li class="active"><a href="main.php">Home</a></li>
         <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="contribution.php">Manage my Contribution</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>

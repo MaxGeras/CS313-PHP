@@ -6,12 +6,10 @@
         // The button has been pressed, so now gather data and set variables
       	if ($_POST['login'] == "error")
         {
-          echo '<p>Your credentials were not found...</p>';        
+                  
         }
     }
-    echo "hello world";
-      echo '<p>Your credentials were not found...</p>';
-      echo "hello world";
+ 
 ?>
 
 <!DOCTYPE html>
