@@ -28,20 +28,29 @@ $db = get_db();
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="myPost.php">Create Post</a>
-    </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="main.php">Home</a></li>
+        <li><a href="main.php">Home</a></li>
+        <li><a href="myPost.php">Create Post</a></li>
         <li><a href="forum.php">Main Forum</a></li>
-        <li><a href="category.php">Create Category</a></li>
-        <li><a href="contribution.php">Manage my Contribution</a></li>
+        <li class="active"><a href="category.php">Create Category</a></li>
+        <li><a href="contribution.php">Manage My Contributions</a></li>
+            <!-- DROP DWON OPTIONS--> 
+        <li>
+          <div class="dropdown1">
+          <button class="dropbtn1">Categories</button>
+          <div class="dropdown-content1">
+          <?php
+           foreach ($db->query('SELECT * FROM category ORDER  BY category_name asc') as $rows)
+            {
+              $categoryDrop= $rows['category_name'];
+              $idDrop = $rows['id'];
+              echo "<a href='association.php?id=$idDrop'>$categoryDrop</a>"; 
+            }
+          ?>
+            </div>
+          </div>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
@@ -62,7 +71,7 @@ $db = get_db();
     Describe your category: <br>
     <textarea rows="12" cols="50" name="describe" placeholder="Enter text here..." required></textarea>
     <br>
-    <input type="submit" value="Save">
+    <input type="submit" class="button button3" value="Save">
     </form>
                 
 

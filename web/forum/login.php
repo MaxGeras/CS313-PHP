@@ -32,7 +32,7 @@
 			Sign In
 		</button>
 		<br>
-		<a class="log" href="signup.php">Not Registered? Create an account</a>
+		<a class="log" href="signUpdate.php">Not Registered? Create an account</a>
 	</form>
 		
   <div id="message"></div>

@@ -21,10 +21,9 @@ $replies = $_POST["reply"];
       {
         $reply_clean = htmlspecialchars($reply);
         echo $reply_clean; 
-        $stmt = $db->prepare("DELETE FROM reply where id ='".$reply_clean."'");
-        //$stmt->bindValue(':post_id', $reply_clean);      
+        $stmt = $db->prepare("DELETE FROM reply where id ='".$reply_clean."'");    
             
-        // execute the insert statement
+        // execute the DELETE statement
         $stmt->execute();
       }        
 

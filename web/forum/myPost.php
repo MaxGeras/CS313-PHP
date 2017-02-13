@@ -37,14 +37,30 @@ $id = 0;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Create Post</a>
+      <a class="navbar-brand" class="active" href="#">Create Post</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="main.php">Home</a></li>
+        <li><a href="main.php">Home</a></li>
         <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
-        <li><a href="contribution.php">Manage my Contribution</a></li>
+        <li><a href="contribution.php">Manage My Contributions</a></li>
+            <!-- DROP DWON OPTIONS--> 
+        <li>
+          <div class="dropdown1">
+          <button class="dropbtn1">Categories</button>
+          <div class="dropdown-content1">
+          <?php
+           foreach ($db->query('SELECT * FROM category ORDER  BY category_name asc') as $rows)
+            {
+              $categoryDrop= $rows['category_name'];
+              $idDrop = $rows['id'];
+              echo "<a href='association.php?id=$idDrop'>$categoryDrop</a>"; 
+            }
+          ?>
+            </div>
+          </div>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
@@ -63,16 +79,15 @@ $id = 0;
     <form action="savepost.php" method="post">
     Subject: <input type="text" name="subject" required><br>
     <select name="forum" required>
-      <option value="0" disabled="disabled" selected="selected" required>
-                                        Please select a category</option>
-       <?php 
+      <option value="" disabled="disabled" selected="selected">Please select a category</option>
+      <?php 
        
-       foreach ($db->query('SELECT * FROM category') as $row)
-       {
-        $id++;
-        echo '<option value="'.$id.'">'.$row['category_name'].'</option>';
+      foreach ($db->query('SELECT * FROM category') as $row)
+      {
+        $idCat = $row['id'];
+        echo '<option value="'.$idCat.'">'.$row['category_name'].'</option>';
       }
-       ?>
+      ?>
     </select>
     <br>
     Message: <br>

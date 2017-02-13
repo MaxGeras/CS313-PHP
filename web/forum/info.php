@@ -13,7 +13,38 @@
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
 
+  if(isset($_SESSION["id_user"]))
+  {
+    $sql1 = "UPDATE myuser
+        SET 
+        user_name = '$userName', 
+        user_password = '$pass',
+        user_email = '$email',
+        user_address = '$address',
+        user_firstname = '$fname', 
+        user_lastname = '$lname'
+        WHERE id ='".$_SESSION["id_user"]."'; 
+        ";
+    $stmt1 = $db->prepare($sql1);  
 
+
+     // pass values to the statement
+    /*
+    $stmt1->bindValue(':user_name', $userName);
+    $stmt1->bindValue(':user_password', $pass);
+    $stmt1->bindValue(':user_email', $email);
+    $stmt1->bindValue(':user_address', $address);
+    $stmt1->bindValue(':user_firstname', $fname);
+    $stmt1->bindValue(':user_lastname', $lname); 
+      */      
+    // execute the UPDATE statement
+    $stmt1->execute();
+
+    $_SESSION["login_user"] = $userName; // Initializing Session
+    $_SESSION["pass_user"] = $pass;
+    header('location: main.php'); 
+    die();
+  }
 
         // prepare statement for insert
  try{

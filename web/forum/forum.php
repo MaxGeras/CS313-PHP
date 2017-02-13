@@ -38,10 +38,26 @@ $db = get_db();
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="main.php">Home</a></li>
-        <li><a href="#">Main Forum</a></li>
+        <li><a href="main.php">Home</a></li>
+        <li class="active"><a href="#">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
-        <li><a href="contribution.php">Manage my Contribution</a></li>
+        <li><a href="contribution.php">Manage My Contributions</a></li>
+            <!-- DROP DWON OPTIONS--> 
+        <li>
+          <div class="dropdown1">
+          <button class="dropbtn1">Categories</button>
+          <div class="dropdown-content1">
+          <?php
+           foreach ($db->query('SELECT * FROM category ORDER  BY category_name asc') as $rows)
+            {
+              $categoryDrop= $rows['category_name'];
+              $idDrop = $rows['id'];
+              echo "<a href='association.php?id=$idDrop'>$categoryDrop</a>"; 
+            }
+          ?>
+            </div>
+          </div>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
@@ -58,28 +74,37 @@ $db = get_db();
 
      <h1 style="text-align: center; font-size: 40px; 
      font-weight: 900;text-decoration: underline;">LDS Forum Posts</h1>
-
-
-                
-    <?php
   
-        foreach ($db->query
-            (' 
-              SELECT * FROM myuser muser 
-              INNER JOIN post mpost ON muser.id = mpost.user_id 
-              INNER JOIN category mcat ON mcat.id = mpost.category_id
-              ORDER  BY mcat.category_name asc;
-           ') as $row)
-        {
+    <table style="text-align: left;">
+      <thead>
+        <tr>
+        <th style="text-align: center; width: 70px;">User</th>
+        <th style="color:#1E90FF;text-align: center;">Category</th>
+        <th style="color:#ADFF2F; text-align: center;">Subject</th>
+        <th style="text-align: center;">Date</th>  
+        </tr>
+      </thead>
+    </table>       
+    <?php
+     
+      foreach ($db->query
+        (' 
+          SELECT * FROM myuser muser 
+          INNER JOIN post mpost ON muser.id = mpost.user_id 
+          INNER JOIN category mcat ON mcat.id = mpost.category_id
+          ORDER  BY mcat.category_name asc;
+        ') as $row)
+      {
         
         // Dsiplay a Post as table 
+      echo "<br>";  
       echo '<form action="reply.php" method="get">';
         echo '<table>';
           echo '<thead>';
             echo '<tr>';
             echo '<th>'.$row['user_firstname']." ".$row['user_lastname'].'</th>';
             echo '<th style="color:#1E90FF">'.$row['category_name'].'</th>';
-            echo '<th style="text-decoration: underline; color:#ADFF2F">'.$row['post_subject'].'</th>';
+            echo '<th style="color:#ADFF2F">'.$row['post_subject'].'</th>';
             echo '<th>'.$row['post_date'].'</th>';
             echo '</tr>';
           echo '</thead>';       

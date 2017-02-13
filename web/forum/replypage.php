@@ -40,7 +40,23 @@ $db = get_db();
         <li class="active"><a href="main.php">Home</a></li>
         <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
-        <li><a href="contribution.php">Manage my Contribution</a></li>
+        <li><a href="contribution.php">Manage My Contributions</a></li>
+            <!-- DROP DWON OPTIONS--> 
+        <li>
+          <div class="dropdown1">
+          <button class="dropbtn1">Categories</button>
+          <div class="dropdown-content1">
+          <?php
+           foreach ($db->query('SELECT * FROM category ORDER  BY category_name asc') as $rows)
+            {
+              $categoryDrop= $rows['category_name'];
+              $idDrop = $rows['id'];
+              echo "<a href='association.php?id=$idDrop'>$categoryDrop</a>"; 
+            }
+          ?>
+            </div>
+          </div>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
@@ -75,7 +91,7 @@ $db = get_db();
             echo '<tr style="background-color:#B0C4DE">';
             echo '<th>'.$rowPost['user_firstname']." ".$rowPost['user_lastname'].'</th>';
             echo '<th style="color:#1E90FF">'.$rowPost['category_name'].'</th>';
-            echo '<th style="text-decoration: underline; color:#1E90FF">'.$rowPost['post_subject'].'</th>';
+            echo '<th style="color:#1E90FF">'.$rowPost['post_subject'].'</th>';
             $subject = $rowPost['post_subject'];
             echo '<th>'.$rowPost['post_date'].'</th>';
             echo '</tr>';

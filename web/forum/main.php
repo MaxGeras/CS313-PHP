@@ -40,10 +40,11 @@ $db = get_db();
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="profile.php">Profile</a></li>
+        <li class="active"><a href="#">Home</a></li> 
+        <li><a href="profile.php">Profile</a></li>
         <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
-        <li><a href="contribution.php">Manage my Contribution</a></li>
+        <li><a href="contribution.php">Manage My Contributions</a></li>
         <!-- DROP DWON OPTIONS--> 
         <li>
           <div class="dropdown1">

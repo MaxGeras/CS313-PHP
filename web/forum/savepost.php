@@ -22,6 +22,8 @@ $db = get_db();
   $id_cat = $_POST['forum'];
   $time = date('Y-m-d H:i:s');
 
+
+
  try{
 
       $sql = "INSERT INTO post(user_id, category_id, post_text, post_date, post_subject) 
@@ -50,6 +52,6 @@ $db = get_db();
     echo "Error connecting to DB. Details: $ex";
   }
  
-header('location: forum.php'); 
+header('location: association.php?id='.$id_cat.''); 
 die();
 ?>

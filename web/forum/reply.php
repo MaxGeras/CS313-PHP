@@ -27,6 +27,7 @@ $_SESSION["check"] = "found";
   { 
        $id = $row['id'];
        $_SESSION["user_post"] = $id;
+       $id_user_post = $row['user_id'];
   }
   echo $id."<br>";
 
@@ -39,23 +40,14 @@ $_SESSION["check"] = "found";
           if(isset($reply['post_id']));
           {
            $isId = $reply[$i]['id'];
+
            $i++;
           }
        }
 
- 
-
-  if(isset($isId))
-  {
 
     header('location: replypage.php?id='.$isId.''); 
     die();
-  }
 
-
- unset($_SESSION["check"]);
- header('location: validatePost.php'); 
- die();
- 
 ?>
 

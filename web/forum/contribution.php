@@ -38,10 +38,26 @@ $db = get_db();
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="main.php">Home</a></li>
+        <li><a href="main.php">Home</a></li>
         <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
-        <li><a href="contribution.php">Manage my Contribution</a></li>
+        <li class="active"><a href="#">Manage My Contributions</a></li>
+            <!-- DROP DWON OPTIONS--> 
+        <li>
+          <div class="dropdown1">
+          <button class="dropbtn1">Categories</button>
+          <div class="dropdown-content1">
+          <?php
+           foreach ($db->query('SELECT * FROM category ORDER  BY category_name asc') as $rows)
+            {
+              $categoryDrop= $rows['category_name'];
+              $idDrop = $rows['id'];
+              echo "<a href='association.php?id=$idDrop'>$categoryDrop</a>"; 
+            }
+          ?>
+            </div>
+          </div>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
@@ -72,14 +88,15 @@ $db = get_db();
       $stmt->bindValue(':id',$_SESSION["id_user"], PDO::PARAM_INT);
       $stmt->execute();
 
-
+         echo '<p style="color:black; text-align: left; font-size:25px;"> 
+         POSTS:</p>';
          echo '<form action="deletePost.php" name="deletePost" method="post">';
          echo '<table>';
           echo '<thead>';
             echo '<tr>';
             echo '<th> Category </th>';
             echo '<th style="color:#1E90FF"> Subject </th>';
-            echo '<th style="text-decoration: underline; color:#ADFF2F"> Content</th>';
+            echo '<th style="color:#ADFF2F"> Content</th>';
             echo '<th> Date </th>';
             echo '<th> Delete Post<th>';
             echo '</tr>';
@@ -132,13 +149,14 @@ $db = get_db();
             '); 
     $stmtReply->bindValue(':id',$_SESSION["id_user"], PDO::PARAM_INT);
     $stmtReply->execute();
-
+        echo '<p style="color:black; text-align: left; font-size:25px;"> 
+         REPLIES:</p>';
         echo '<form action="deleteReply.php" name="formReply" method="post">';
         echo '<table>';
           echo '<thead>';
             echo '<tr>';
             echo '<th style="color:#1E90FF"> Content </th>';
-            echo '<th style="text-decoration: underline; color:#ADFF2F"> Date</th>';
+            echo '<th style="color:#ADFF2F"> Date</th>';
             echo '<th> Delete Reply<th>';
             echo '</tr>';
           echo '</thead>';

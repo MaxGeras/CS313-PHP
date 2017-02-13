@@ -50,10 +50,27 @@ else
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="main.php">Home</a></li>
+        <li><a href="main.php">Home</a></li>
+        <li class="active"><a href="#">Profile</a></li>
         <li><a href="forum.php">Main Forum</a></li>
         <li><a href="category.php">Create Category</a></li>
-        <li><a href="contribution.php">Manage my Contribution</a></li>
+        <li><a href="contribution.php">Manage My Contributions</a></li>
+            <!-- DROP DWON OPTIONS--> 
+        <li>
+          <div class="dropdown1">
+          <button class="dropbtn1">Categories</button>
+          <div class="dropdown-content1">
+          <?php
+           foreach ($db->query('SELECT * FROM category ORDER  BY category_name asc') as $rowCategory)
+            {
+              $categoryDrop= $rowCategory['category_name'];
+              $idDrop = $rowCategory['id'];
+              echo "<a href='association.php?id=$idDrop'>$categoryDrop</a>"; 
+            }
+          ?>
+            </div>
+          </div>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span>Log Out</a></li>
@@ -71,40 +88,50 @@ else
       <table>
         <thead>
             <tr>
-            <th></th>
-            <th>Information</th> 
+            <th style="background-color: black;"></th>
+            <th style="background-color: black; color: white;">Information</th> 
             </tr>
         </thead>
 
-   <?php
+    <?php
 
     foreach ($rows as $row)
-  {
+    {
       echo '<tbody>';
 
-      echo '<tr><th><strong> First name   </strong></th>';
+      echo '<tr><th style="color:#1E90FF;"><strong> First name   </strong></th>';
       echo '<th>'.$row['user_firstname'].'</th>';
       echo '</tr>';
     
-      echo '<tr><th><strong> Last name    </strong></th>';
+      echo '<tr><th style="color:#1E90FF;"><strong> Last name    </strong></th>';
       echo '<th>'.$row['user_lastname'].'</th>';
       echo '</tr>';
 
-      echo '<tr><th><strong> Address  </strong></th>';
+      echo '<tr><th style="color:#1E90FF;"><strong> Address  </strong></th>';
       echo '<th>'.$row['user_address'].'</th>';
       echo '</tr>';
 
-      echo '<tr><th><strong> E-mail  </strong></th>';
+      echo '<tr><th style="color:#1E90FF;"><strong> E-mail  </strong></th>';
       echo '<th>'.$row['user_email'].'</th>';
       echo '</tr>';
 
       echo '</tbody>';
 
-  }
-
-   ?>
+    }
+    
+    echo "<br>";
+    echo "<br>";
+    ?>
                 
-</table>
+    </table>
+
+    <?php echo "<br>"; ?>
+    <form action="signUpdate.php" method="Post">
+      <button class="button button4" name="post" type="submit" 
+                  value="Update">Update Info</button>
+    </form>        
+   
+
     </div>
     
     <div class="col-sm-2 sidenav" style=" background: url(http://www.mormonhaven.com/mormon_missionary.jpg) no-repeat; background-size: cover; ">
