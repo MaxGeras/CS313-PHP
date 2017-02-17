@@ -205,3 +205,4 @@ GRANT USAGE, SELECT ON ALL SEQUENCEs IN SCHEMA public TO note_user;
 
 
 INSERT INTO course(name, number) VALUES ('Web Enginnering II', 'CS 313'); 
+INSERT INTO note(course_id, content, date) VALUES (1, 'Learing about PHP. It''s really cool', '2017-02-09');

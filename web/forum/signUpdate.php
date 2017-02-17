@@ -5,6 +5,7 @@ if(!isset($_SESSION["login_user"]) || !isset($_SESSION["id_user"]) )
 {
     $_SESSION["login_user"] = "";
     $_SESSION["id_user"] = "";
+    $_SESSION["pass_user"] = "";
 }
 
 try
@@ -72,7 +73,7 @@ catch(PDOException $ex)
 
     <label style="color:#ADFF2F;"><b>Password</b></label>
     <input type="text" placeholder="Enter Password" name="psw" value="<?php
-    echo $user_password; ?>"
+    echo $_SESSION["pass_user"]; ?>"
     required>
 
     <label style="color:#ADFF2F;"><b>First Name</b></label>
@@ -96,10 +97,10 @@ catch(PDOException $ex)
 
     <?php 
           if( $_SESSION["login_user"] == "" && $_SESSION["id_user"] == "" ) 
-              echo '<button class="button button4" type="submit">Create Account</button>';
+              echo '<button class="button button4" type="submit" name="submit" value="newAccount" >Create Account</button>';
           else
           {
-              echo '<button class="button button4" type="submit">Save Change</button>';
+              echo '<button class="button button4" type="submit" name="update" value="updateAccount">Save Change</button>';
 
           }
     ?>

@@ -9,6 +9,8 @@ if (!isset($_SESSION["login_user"]) || strlen(trim($_SESSION["login_user"])) == 
 
 require "connect.php";
 $db = get_db();
+
+
 ?>
 
 
