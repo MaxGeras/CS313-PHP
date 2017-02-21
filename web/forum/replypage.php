@@ -105,7 +105,7 @@ $db = get_db();
             echo '<tr style="background-color:#B0C4DE">';
             echo '<th>'.$rowPost['user_firstname']." ".$rowPost['user_lastname'].'</th>';
             echo '<th style="color:#1E90FF">'.$rowPost['category_name'].'</th>';
-            echo '<th style="color:#1E90FF">'.$rowPost['post_subject'].'</th>';
+            echo '<th style="color:#ADFF2F">'.$rowPost['post_subject'].'</th>';
             $subject = $rowPost['post_subject'];
             echo '<th>'.$rowPost['post_date'].'</th>';
             echo '</tr>';
