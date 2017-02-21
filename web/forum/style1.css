@@ -34,9 +34,14 @@
     }
 
 
+.tb1{
+   width:50%;
+   float: left;
+}
+
 table{
   width: 100%;
-   border-radius: 25px;
+  border-radius: 25px;
 
 }
 

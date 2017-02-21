@@ -130,7 +130,7 @@ foreach ($rows as $row)
         echo '</table>';
   
         echo '<button class="button button4" name="reply" type="submit" 
-                  value="'.$row['post_subject'].'">Join Conversation</button>';
+                  value="'.$row['post_date'].'">Join Conversation</button>';
     echo '</form>';
     echo '<br>';
     echo '<br>';

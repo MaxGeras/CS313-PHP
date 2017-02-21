@@ -85,6 +85,18 @@ $db = get_db();
       WHERE p.id=:id');
       $stmtPost->bindValue(':id', $_SESSION["user_post"], PDO::PARAM_STR);
       $stmtPost->execute();
+
+      
+      echo  '<table style="text-align: left;">';
+      echo  '<thead>';
+      echo  '<tr>';
+      echo  '<th style="text-align: center; width: 250px;">User</th>';
+      echo  '<th style="color:#1E90FF;text-align: center;">Category</th>';
+      echo  '<th style="color:#ADFF2F; text-align: center;">Subject</th>';
+      echo  '<th style="text-align: center;">Date</th>';  
+      echo  '</tr>';
+      echo  '</thead>';
+      echo  '</table>'; 
     
       while ($rowPost = $stmtPost->fetch(PDO::FETCH_ASSOC))
       {
@@ -108,14 +120,14 @@ $db = get_db();
 
  
 
-
+  $i = 0;
   $stmt = $db->prepare('SELECT * FROM reply WHERE post_id=:post_id ');
   $stmt->bindValue(':post_id', $_SESSION["user_post"], PDO::PARAM_STR);
   $stmt->execute();
   $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
   foreach ($rows as $row) {
  
-
+     
       
       //  Display Reply User
       $stmtReply = $db->prepare('SELECT * FROM myuser WHERE id=:id ');
@@ -123,7 +135,16 @@ $db = get_db();
       $stmtReply->execute();
       while ($rowReply = $stmtReply->fetch(PDO::FETCH_ASSOC))
       {
-        echo '<table>';
+        
+        $i++;
+        if($i % 2 == 0)
+        { 
+          echo '<table style="background-color: #7CFC00; width:500px; margin-right: 20px;">';
+        }
+        else
+        {
+          echo '<table style="background-color: #ADFF2F; width:500px; margin-left: 200px;">';
+        }
           echo '<thead>';
             echo '<tr>';
             echo '<th>'.$rowReply['user_firstname']." ".$rowReply['user_lastname'].'</th>';
@@ -131,7 +152,7 @@ $db = get_db();
             echo '</tr>';
           echo '</thead>';       
             echo '<tbody>';
-                    echo '<tr>'; 
+                    echo '<tr>';
                     echo  '<td colspan="2">'.$row['reply_text'].'</td>';
                     echo '<tr>';
             echo '</tbody>';        

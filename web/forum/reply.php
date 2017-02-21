@@ -12,14 +12,13 @@ require "connect.php";
 $db = get_db();
 
 
-$replySubject = $_GET['reply'];
-$_SESSION["subject"] = $replySubject;
+$replyTime = $_GET['reply'];
 $_SESSION["check"] = "found";
 
    // Find If the post has some comments otherwise create one
  
-  $stmt = $db->prepare('SELECT * FROM post WHERE post_subject=:post_subject');
-  $stmt->bindValue(':post_subject', $_SESSION["subject"], PDO::PARAM_STR);
+  $stmt = $db->prepare('SELECT * FROM post WHERE post_date=:post_date');
+  $stmt->bindValue(':post_date', $replyTime, PDO::PARAM_STR);
   $stmt->execute();
   $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
    
@@ -27,6 +26,7 @@ $_SESSION["check"] = "found";
   { 
        $id = $row['id'];
        $_SESSION["user_post"] = $id;
+       $_SESSION["subject"]  = $row['post_subject'];
        $id_user_post = $row['user_id'];
   }
   echo $id."<br>";
@@ -39,6 +39,7 @@ $_SESSION["check"] = "found";
        {
           if(isset($reply['post_id']));
           {
+            
            $isId = $reply[$i]['id'];
 
            $i++;
