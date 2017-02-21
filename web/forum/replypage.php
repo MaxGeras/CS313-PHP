@@ -117,7 +117,7 @@ $db = get_db();
             echo '</tbody>';        
         echo '</table>';
       }
-
+      echo "<br>";
  
 
   $i = 0;
